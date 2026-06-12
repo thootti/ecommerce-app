@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     domains: [
       'images.unsplash.com',
-      `${process.env.S3_BUCKET}.s3.ap-south-1.amazonaws.com`,
       'ecommerce-dev-assets-efcb3b7c.s3.ap-south-1.amazonaws.com'
     ]
   },
