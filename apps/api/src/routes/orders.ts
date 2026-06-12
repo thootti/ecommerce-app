@@ -39,7 +39,7 @@ export default async function orderRoutes(app: FastifyInstance) {
     })
 
     for (const item of cartItems) {
-      const product = products.find(p => p.id === item.productId)
+      const product = products.find((p: any) => p.id === item.productId)
       if (!product) return reply.status(400).send({ error: `Product not found` })
       if (product.stock < item.quantity) {
         return reply.status(400).send({ error: `Insufficient stock for ${product.name}` })
@@ -48,7 +48,7 @@ export default async function orderRoutes(app: FastifyInstance) {
 
     // Calculate totals
     const subtotal = cartItems.reduce((sum: number, item: any) => {
-      const product = products.find(p => p.id === item.productId)!
+      const product = products.find((p: any) => p.id === item.productId)!
       return sum + product.price * item.quantity
     }, 0)
 
@@ -79,7 +79,7 @@ export default async function orderRoutes(app: FastifyInstance) {
         paymentIntentId: paymentIntent.id,
         items: {
           create: cartItems.map((item: any) => {
-            const product = products.find(p => p.id === item.productId)!
+            const product = products.find((p: any) => p.id === item.productId)!
             return {
               productId: item.productId,
               quantity: item.quantity,

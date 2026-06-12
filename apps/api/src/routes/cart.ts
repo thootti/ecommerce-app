@@ -23,7 +23,7 @@ export default async function cartRoutes(app: FastifyInstance) {
 
     const enriched = items
       .map((item: any) => {
-        const product = products.find(p => p.id === item.productId)
+        const product = products.find((p: any) => p.id === item.productId)
         if (!product) return null
         return {
           productId: item.productId,
