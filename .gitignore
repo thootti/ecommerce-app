@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.next/
+.env
+.env.local
+.env.production
+*.pem
+.terraform/
+*.tfstate
+*.tfstate.backup
+.DS_Store
+coverage/
